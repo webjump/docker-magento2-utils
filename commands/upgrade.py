@@ -6,4 +6,4 @@ from fabric.colors import green
 
 def main(args):
     local('cd ./utils && git pull && git checkout master')
-    print(green('Upgrade successfull.'))
+    print(green('Upgrade successful.'))
