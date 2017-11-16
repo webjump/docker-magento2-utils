@@ -1,6 +1,7 @@
 # coding: utf-8
  
 from fabric.api import run, env
+from fabric.colors import green
 
 from jump import helpers
 
@@ -12,6 +13,14 @@ def _set_env(server):
 
 
 def main(args):
-    _set_env(args[0])
+    server = args[0]
+    _set_env(server)
     
+    print(green('Initializing deploy on %s. This could take a while...' % server))
     run('pwd')
+    run('bin/magento maintenance:enable')
+    run('composer update')
+    run('bin/magento setup:upgrade')
+    run('bin/magento deploy:mode:set production')
+    run('bin/magento maintenance:disable')
+    print(green('Deploy successful on %s.') % server)
