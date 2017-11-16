@@ -17,11 +17,10 @@ parser.add_argument('--deploy',
     choices=['homolog', 'production'])
 
 parser.add_argument('--upgrade', 
-    help='update jump utilitary script', 
+    help='upgrade composer, pip, jump script', 
     metavar='target',
     nargs=1,
     type=str,
-    choices=['jumpa'])
-
+    choices=['jump'])
 
 execute(parser)
