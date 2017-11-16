@@ -1,0 +1,40 @@
+#!/opt/.virtualenvs/magento/bin/python3.6
+# coding: utf-8
+
+import argparse
+import sys
+import os
+
+from helpers import get_command_name, get_arguments
+import commands
+
+
+parser = argparse.ArgumentParser(prog='jump')
+
+parser.add_argument('--deploy', 
+    metavar='env',
+    type=str,
+    nargs=1, 
+    help='the environment to deploy', 
+    default=argparse.SUPPRESS,
+    choices=['homolog', 'production'])
+
+parser.add_argument('--upgrade', 
+    help='update jump utilitary script', 
+    metavar='target',
+    nargs=1,
+    type=str,
+    choices=['jumpa'])
+
+
+
+# Select the command function
+args = parser.parse_args()
+command_name = get_command_name(args)
+command = getattr(commands, command_name)
+arguments = get_arguments(args, command_name)
+
+
+# Execute the command function
+function = getattr(command, 'main')
+function(arguments)
