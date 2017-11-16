@@ -3,8 +3,7 @@
 
 import argparse
 
-from helpers import get_command_name, get_arguments
-import commands
+from helpers import execute
 
 
 parser = argparse.ArgumentParser(prog='jump')
@@ -25,14 +24,4 @@ parser.add_argument('--upgrade',
     choices=['jumpa'])
 
 
-
-# Select the command function
-args = parser.parse_args()
-command_name = get_command_name(args)
-command = getattr(commands, command_name)
-arguments = get_arguments(args, command_name)
-
-
-# Execute the command function
-function = getattr(command, 'main')
-function(arguments)
+execute(parser)
