@@ -3,7 +3,7 @@
 
 import argparse
 
-from helpers import execute
+from jump.helpers import execute, get_env
 
 
 parser = argparse.ArgumentParser(prog='jump')

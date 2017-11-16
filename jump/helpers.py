@@ -3,7 +3,7 @@
 import sys
 import os
 
-import commands
+import jump.commands
 
 
 # returns an environment variable as uppercase
@@ -38,7 +38,7 @@ def execute(parser):
         parser.print_help()
         sys.exit(0)
 
-    command = getattr(commands, command_name)
+    command = getattr(jump.commands, command_name)
     arguments = get_arguments(args, command_name)
     
     function = getattr(command, 'main')
