@@ -3,7 +3,7 @@
 from fabric.api import run, env
 from fabric.colors import green
 
-from jump import helpers
+from jumputils import helpers
 
 
 def _set_env(server):

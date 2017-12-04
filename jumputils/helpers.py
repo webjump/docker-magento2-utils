@@ -3,7 +3,7 @@
 import sys
 import os
 
-import jump.commands
+import jumputils.commands
 
 
 # returns an environment variable as uppercase
